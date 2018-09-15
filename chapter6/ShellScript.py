@@ -443,7 +443,140 @@ print music_media
 print "6.15 列表的特殊特性"
 print "用列表构建其他数据结构"
 
+print "6.16 元组"
+print "1 如何创建一个元组并给它赋值"
+aTuple = (123, 'abc', 4.56, ['inner', 'tuple'], 7-9j)
+anotherTuple = (None, 'something to see here')
+print aTuple
+print anotherTuple
+emptiestPossibleTuple = (None,)
+print emptiestPossibleTuple
+print tuple('bar')
 
+print "2 如何访问元组中的值"
+print aTuple[1:4]
+print aTuple[:3]
+print aTuple[3][1]
+
+print "3 如何更新元组"
+aTuple = aTuple[0], aTuple[1], aTuple[-1]
+print aTuple
+tup1 = (12, 34.56)
+tup2 = ('abc', 'xyz')
+tup3 = tup1 + tup2
+print tup3
+
+print "4 如何移除一个元组的元素以及元组(本身)"
+del aTuple
+
+
+print "6.17 元组操作符和内建函数"
+print "6.17.1 标准类型操作符、序列类型操作符和内建函数"
+print "1 创建, 重复, 连接操作"
+t = (['xyz', 123], 23, -103.4)
+print t
+print t * 2
+t = t + ('free', 'easy')
+print t
+
+print "2 成员关系操作, 切片操作"
+print 23 in t
+print 123 in t
+print t[0][1]
+print t[1:]
+
+print "3 内建函数"
+print str(t)
+print len(t)
+print max(t)
+print min(t)
+print cmp(t, (['xyz', 123], 23, -103.4, 'free', 'easy'))
+print list(t)
+
+print "4 操作符"
+print (4, 2) < (3, 5)
+print (2, 4) < (3, -1)
+print (2, 4) == (3, -1)
+print (2, 4) == (2, 4)
+
+print "6.17.2 元组类型操作符和内建函数,内建方法"
+
+
+print "6.18 元组的特殊特性"
+print "6.18.1 不可变性给元组带来了什么影响"
+print "6.18.2 元组也不是那么‘不可变’"
+s = 'first'
+s = s + ' second'
+print s
+t = ('third', 'forth')
+t = t + ('fifth', 'sixth')
+print t
+
+t = (['xyz', 123], 23, -103.4)
+print t
+print t[0][1]
+t[0][1] = ['abc', 'def']
+print t
+
+print "6.18.3 默认集合类型"
+print 'abc', -4.24e93, 18+6.6j, 'xyz'
+x, y = 1, 2
+print x, y
+
+print 4, 2 < 3, 5  # int, comparison, int
+print (4, 2) < (3, 5)  # tuple comparison
+
+print "6.18.4 单元素元组"
+print ['abc']
+print type(['abc'])   # a list
+print ('xyz')
+print type(('xyz'))   # a string, not a tuple
+print ('xyz',)
+print type(('xyz',))
+
+print "6.18.5 字典的关键字"
+
+print "6.19 相关模块"
+
+print "6.20 拷贝Python对象, 浅拷贝和深拷贝"
+########### 浅拷贝 ##########
+person = ['name', ['savings', 100.00]]
+hubby = person[:]      # 切片拷贝
+wifey = list(person)   # 工厂方法拷贝
+print [id(x) for x in person, hubby, wifey]
+print [id(x) for x in hubby]
+print [id(x) for x in wifey]
+
+hubby[0] = 'joe'
+wifey[0] = 'jane'
+print hubby, wifey
+hubby[1][1] = 50.00
+print hubby, wifey
+print [id(x) for x in hubby]
+print [id(x) for x in wifey]
+
+########### 深拷贝 ##########
+person = ['name', ['savings', 100.00]]
+hubby = person[:]
+import copy
+wifey = copy.deepcopy(person)
+print [id(x) for x in person, hubby, wifey]
+
+hubby[0] = 'joe'
+wifey[0] = 'jane'
+print hubby, wifey
+hubby[1][1] = 50.00
+print hubby, wifey
+print [id(x) for x in hubby]
+print [id(x) for x in wifey]
+
+
+person = ['name', ('savings', 100.00)]
+import copy
+newperson = copy.deepcopy(person)
+print [id(x) for x in person, newperson]
+print [id(x) for x in person]
+print [id(x) for x in newperson]
 
 
 
